@@ -1,0 +1,47 @@
+1) Для того, чтобы добавить нового пользователя мы должны ввесте утилиту useradd или adduser// Получится такой код:
+	linyx3@ubuntu:~$ sudo upgrade
+	[sudo] password for linyx3: 
+	sudo: upgrade: command not found
+	linyx3@ubuntu:~$ sudo update
+	sudo: update: command not found
+	linyx3@ubuntu:~$ sudo adduser ilya
+	Adding user `ilya' ...
+	Adding new group `ilya' (1002) ...
+	Adding new user `ilya' (1002) with group `ilya' ...
+	Creating home directory `/home/ilya' ...
+	Copying files from `/etc/skel' ...
+	New password: 
+	Retype new password: 
+	passwd: password updated successfully
+	Changing the user information for ilya
+	Enter the new value, or press ENTER for the default
+		Full Name []: ilya
+		Room Number []: 123
+		Work Phone []: 89272349697
+		Home Phone []: 
+		Other []: 
+	Is the information correct? [Y/n] y
+
+2) Для того, чтобы удалить пользователя нужно испоьзовать утилиту userdel:
+sudo userdel//sudo userdel -r(Удаление вместе с директорией)
+	linyx3@ubuntu:~$ sudo userdel ilya
+	[sudo] password for linyx3: 
+
+3)Чтобы создавть группу для пользователя нужно:
+	sudo groupadd new_group
+
+4) Чтобы добавить текущую учетную запись в группу нужно:
+	usermod -a -G group_name user_name(Этой командой мы меняем название группы на свое, здесь - user_name)
+
+5) Чтобы добавить пользователя в группу:
+	usermod -a -G grupka user(Мы пользователя user добавляем в группу grupka)
+
+6) Чтобы узнать в какие группы входит пользователь вводим команду
+	groups
+
+7)мы уже смогли добавить пользователя  сгруппой в еще одну группу, но теперь мы поменяем первичную группу пользователя:
+	usermod -g group_name user_name(Когда вы используете маленькую g, вы назначаете главную группу.)
+
+8) УДАЛЕНИЕ ПОЛЬЗОВАТЕЛЯ ИЗ ГРУППЫ LINUX:
+Для этого мы должны использовать команду 
+	gpasswd -d user grupka//(Опция -d сообщает, что нужно выполнить удаление)
